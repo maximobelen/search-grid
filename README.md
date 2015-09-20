@@ -44,9 +44,6 @@ circle.size(); // This return 2
 
 
 ```
-###ScrollTop
-
-
 ## Usage
 
 [![NPM](https://nodei.co/npm/circlearray.png)](https://www.npmjs.com/package/circlearray)
