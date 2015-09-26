@@ -1,86 +1,49 @@
-module.exports = CircleArray;
+var SearchElement = require('./search-element');
 
-var array = [];
-var currentElement = {};
-var currentIndex = -1;
-var maxSize = 0;
+module.exports = SearchGrid;
 
-function CircleArray(options) {
-  if (!(this instanceof CircleArray))
-    return new CircleArray(options);
+var results = [];
+var searchKey = '';
+var searchInput;
+var template = fs.readFileSync(__dirname + '/index.html', 'utf8');
 
-  if(typeof options == 'number'){
-    array = new Array(options);
-    maxSize = options;
-  }else{
-    if( Object.prototype.toString.call( options ) === '[object Array]' ) {
-      array = options;
-      maxSize = options.length;
-      currentElement = options[0];
-      currentIndex = 0;
+function SearchGrid(options) {
+  if (!(this instanceof SearchGrid))
+    return new SearchGrid(options);
+
+  if(typeof options == 'object'){
+    searchKey = options.key;
+    if(options.searchInput){
+      searchInput = options.searchInput;
+      searchInput.addEventListener('keydown', function(event) {
+        this.find(event);
+      }.bind(this), false);
     }
   }
 }
 
-CircleArray.prototype.add = function(element) {
-  if(this.size() < maxSize){
-    currentIndex++;
-    array[currentIndex]= element;
-    currentElement = element;
+SearchGrid.prototype.add = function(element) {
+  var element = new SearchElement(searchKey, element);
+  results.push(element);
+};
+
+SearchGrid.prototype.remove = function(key) {
+ var iterator = array.length;
+  while(iterator--){
+    if(array[iterator].sameKey(value)){
+      array.splice(iterator,1);
+    }
   }
 };
 
-CircleArray.prototype.prev = function() {
-  var index = array.indexOf(currentElement);
-  if (index === 0){
-    currentElement = array[array.length-1];
-    currentIndex = array.length-1;
-    return currentElement;
-  }else{
-    currentElement = array[index-1];
-    currentIndex = index-1;
-  }
+SearchGrid.prototype.size = function() {
+  return results.length;
 };
 
-CircleArray.prototype.next = function() {
-  var index = array.indexOf(currentElement);
-  if (index === array.length-1){
-    currentElement = array[0];
-    currentIndex = 0;
-    return currentElement;
-  }else{
-    currentElement = array[index+1];
-    currentIndex = index+1;
-  }
-
-};
-
-CircleArray.prototype.currentElement = function() {
-  return currentElement;
-};
-
-CircleArray.prototype.size = function() {
-  var count = 0;
-  for (var i = 0; i < array.length; i++) {
-    if (typeof array[i] !== 'undefined'){
+SearchGrid.prototype.find = function(key) {
+  for (var i = 0; i < results.length; i++) {
+    if (results == ){
       count++;
     }
   }
-  return count;
-};
-
-CircleArray.prototype.maxSize = function() {
-  return array.length;
-};
-
-CircleArray.prototype.isFull = function() {
-  return this.size() === maxSize ? true : false;
-};
-
-CircleArray.prototype.isEmpty = function() {
-  return this.size() === 0;
-};
-
-CircleArray.prototype.print = function() {
-  return array.toString();
 };

@@ -1,25 +1,29 @@
 {
-  "name": "circlearray",
-  "version": "1.0.1",
-  "description": "A circle array structure",
+  "name": "search-grid",
+  "version": "1.0.0",
+  "description": "A grid for displaying search results ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maximobelen/circlearray.git"
+    "url": "git+https://github.com/maximobelen/search-grid.git"
   },
   "keywords": [
-    "array",
-    "circle",
-    "structure",
-    "round"
+    "search",
+    "grid",
+    "display",
+    "results",
+    "filter"
   ],
-  "author": "Máximo Belén",
+  "author": "Máximo Bélen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maximobelen/circlearray/issues"
+    "url": "https://github.com/maximobelen/search-grid/issues"
   },
-  "homepage": "https://github.com/maximobelen/circlearray#readme"
+  "homepage": "https://github.com/maximobelen/search-grid#readme",
+  "dependencies": {
+    "fs": "0.0.2"
+  }
 }
